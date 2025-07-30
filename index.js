@@ -20,13 +20,13 @@ mongoose.connect(
   }
 );
 
+const productSchema = new mongoose.Schema({ name: String, price: Number });
+const Product = mongoose.model("Product", productSchema);
+module.exports.Product = Product;
+
 app.get("/products", async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: "There is internal server error" });
-  }
+  const products = await Product.find();
+  res.json(products);
 });
 
 app.get("/product/:id", async (req, res) => {

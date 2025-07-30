@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const Cart = mongoose.model(
-  "Car",
+  "Cart",
   new mongoose.Schema({
     userId: String,
     items: [
